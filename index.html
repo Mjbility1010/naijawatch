@@ -1,192 +1,322 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NaijaWatch - Watch. Discover. Enjoy.</title>
 
-  <title>NaijaWatch - Watch & Earn</title>
+<style>
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 
-  <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+body {
+  font-family: Arial, sans-serif;
+  background: #f5f7fb;
+  color: #172033;
+}
 
-    body {
-      font-family: Arial, sans-serif;
-      background: #f5f7f6;
-      color: #172018;
-    }
+header {
+  background: #071a35;
+  color: white;
+  padding: 18px 5%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+  flex-wrap: wrap;
+}
 
-    header {
-      background: #087f23;
-      color: white;
-      padding: 18px 20px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
+.logo {
+  font-size: 25px;
+  font-weight: bold;
+}
 
-    .logo {
-      font-size: 25px;
-      font-weight: bold;
-    }
+.logo span {
+  color: #22c55e;
+}
 
-    .login {
-      color: white;
-      text-decoration: none;
-      font-weight: bold;
-    }
+nav a {
+  color: white;
+  text-decoration: none;
+  margin-left: 18px;
+  font-size: 14px;
+}
 
-    .hero {
-      background: white;
-      text-align: center;
-      padding: 55px 20px;
-    }
+.hero {
+  background: linear-gradient(135deg, #071a35, #0f766e);
+  color: white;
+  padding: 55px 5%;
+  text-align: center;
+}
 
-    .hero h1 {
-      font-size: 38px;
-      margin-bottom: 15px;
-    }
+.hero h1 {
+  font-size: 38px;
+  margin-bottom: 15px;
+}
 
-    .hero p {
-      color: #666;
-      font-size: 17px;
-      line-height: 1.6;
-      margin-bottom: 25px;
-    }
+.hero p {
+  font-size: 17px;
+  margin-bottom: 25px;
+  color: #dbeafe;
+}
 
-    .button {
-      display: inline-block;
-      background: #087f23;
-      color: white;
-      padding: 14px 28px;
-      border-radius: 8px;
-      text-decoration: none;
-      font-weight: bold;
-    }
+.btn {
+  display: inline-block;
+  background: #22c55e;
+  color: white;
+  padding: 13px 25px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+}
 
-    .section {
-      max-width: 900px;
-      margin: auto;
-      padding: 35px 20px;
-    }
+.search {
+  padding: 25px 5%;
+  text-align: center;
+}
 
-    .section h2 {
-      margin-bottom: 20px;
-    }
+.search input {
+  width: 90%;
+  max-width: 550px;
+  padding: 14px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 15px;
+}
 
-    .cards {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 18px;
-    }
+.container {
+  padding: 10px 5% 40px;
+}
 
-    .card {
-      background: white;
-      padding: 25px 20px;
-      border-radius: 12px;
-      text-align: center;
-      box-shadow: 0 3px 12px rgba(0,0,0,0.08);
-    }
+.section-title {
+  margin: 30px 0 18px;
+  font-size: 24px;
+}
 
-    .icon {
-      font-size: 38px;
-      margin-bottom: 12px;
-    }
+.categories {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 25px;
+}
 
-    .card h3 {
-      margin-bottom: 8px;
-    }
+.category {
+  background: white;
+  padding: 10px 16px;
+  border-radius: 20px;
+  border: 1px solid #e5e7eb;
+  cursor: pointer;
+}
 
-    .card p {
-      color: #666;
-      line-height: 1.5;
-    }
+.category:hover {
+  background: #dcfce7;
+}
 
-    footer {
-      background: #111;
-      color: white;
-      text-align: center;
-      padding: 25px 15px;
-      margin-top: 30px;
-    }
-  </style>
+.videos {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 20px;
+}
+
+.card {
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.06);
+}
+
+.thumbnail {
+  height: 150px;
+  background: linear-gradient(135deg, #0f766e, #1e3a8a);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 45px;
+}
+
+.card-content {
+  padding: 16px;
+}
+
+.card h3 {
+  font-size: 17px;
+  margin-bottom: 8px;
+}
+
+.card p {
+  font-size: 13px;
+  color: #64748b;
+  margin-bottom: 15px;
+}
+
+.watch {
+  color: #0f766e;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.reward {
+  background: #ecfdf5;
+  border: 1px solid #bbf7d0;
+  padding: 25px;
+  border-radius: 12px;
+  margin-top: 35px;
+}
+
+.reward h2 {
+  color: #166534;
+  margin-bottom: 10px;
+}
+
+.reward p {
+  color: #166534;
+  line-height: 1.6;
+  margin-bottom: 15px;
+}
+
+footer {
+  background: #071a35;
+  color: #cbd5e1;
+  text-align: center;
+  padding: 25px;
+  margin-top: 30px;
+  font-size: 14px;
+}
+
+@media (max-width: 600px) {
+  .hero h1 {
+    font-size: 28px;
+  }
+
+  nav {
+    width: 100%;
+    text-align: center;
+  }
+
+  nav a {
+    margin: 0 8px;
+  }
+}
+</style>
 </head>
 
 <body>
 
-  <header>
-    <div class="logo">NaijaWatch</div>
-    <a href="#" class="login">Login</a>
-  </header>
+<header>
+  <div class="logo">Naija<span>Watch</span> 🇳🇬</div>
 
-  <section class="hero">
-    <h1>Watch. Enjoy. Earn.</h1>
+  <nav>
+    <a href="#">Home</a>
+    <a href="#entertainment">Entertainment</a>
+    <a href="#news">News</a>
+    <a href="#rewards">Rewards</a>
+  </nav>
+</header>
 
+<section class="hero">
+  <h1>Watch. Discover. Enjoy.</h1>
+  <p>Your home for Nigerian entertainment and news.</p>
+  <a href="#videos" class="btn">Explore Videos</a>
+</section>
+
+<section class="search">
+  <input type="text" id="searchInput"
+    placeholder="Search entertainment, news, comedy..."
+    onkeyup="searchVideos()">
+</section>
+
+<main class="container">
+
+  <h2 class="section-title">Browse Categories</h2>
+
+  <div class="categories">
+    <div class="category">🎬 Entertainment</div>
+    <div class="category">📰 News</div>
+    <div class="category">😂 Comedy</div>
+    <div class="category">🎵 Music</div>
+    <div class="category">⚽ Sports</div>
+  </div>
+
+  <h2 class="section-title" id="videos">Featured Videos</h2>
+
+  <div class="videos">
+
+    <div class="card" id="entertainment">
+      <div class="thumbnail">🎬</div>
+      <div class="card-content">
+        <h3>Latest Nigerian Entertainment</h3>
+        <p>Discover trending entertainment stories and videos.</p>
+        <a href="#" class="watch">Watch Video →</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="thumbnail">😂</div>
+      <div class="card-content">
+        <h3>Comedy & Funny Moments</h3>
+        <p>Enjoy comedy and entertaining moments.</p>
+        <a href="#" class="watch">Watch Video →</a>
+      </div>
+    </div>
+
+    <div class="card" id="news">
+      <div class="thumbnail">📰</div>
+      <div class="card-content">
+        <h3>Latest Nigerian News</h3>
+        <p>Stay informed with important news and updates.</p>
+        <a href="#" class="watch">Watch Video →</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="thumbnail">🎵</div>
+      <div class="card-content">
+        <h3>Music & Trending Stories</h3>
+        <p>Explore music news and trending stories.</p>
+        <a href="#" class="watch">Watch Video →</a>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="reward" id="rewards">
+    <h2>💰 Rewards Coming Soon</h2>
     <p>
-      Welcome to NaijaWatch — a platform where you can
-      discover entertaining videos and earn rewards from
-      eligible activities.
+      NaijaWatch is being developed to support a legitimate
+      rewards program for viewers. More details will be announced
+      when the system is ready.
     </p>
+    <a href="#" class="btn">Learn More</a>
+  </div>
 
-    <a href="#" class="button">Create Free Account</a>
-  </section>
+</main>
 
-  <section class="section">
+<footer>
+  <p>© 2026 NaijaWatch. All rights reserved.</p>
+  <p>Entertainment • News • Community</p>
+</footer>
 
-    <h2>How NaijaWatch Works</h2>
+<script>
+function searchVideos() {
+  let input = document.getElementById("searchInput").value.toLowerCase();
+  let cards = document.querySelectorAll(".card");
 
-    <div class="cards">
+  cards.forEach(function(card) {
+    let text = card.innerText.toLowerCase();
 
-      <div class="card">
-        <div class="icon">🎬</div>
-        <h3>Watch Videos</h3>
-        <p>Discover interesting videos and sponsored content.</p>
-      </div>
-
-      <div class="card">
-        <div class="icon">🪙</div>
-        <h3>Earn Rewards</h3>
-        <p>Complete eligible activities and collect points.</p>
-      </div>
-
-      <div class="card">
-        <div class="icon">💳</div>
-        <h3>Redeem</h3>
-        <p>Request eligible rewards when you reach the required balance.</p>
-      </div>
-
-    </div>
-
-  </section>
-
-  <section class="section">
-
-    <h2>Featured Videos</h2>
-
-    <div class="cards">
-
-      <div class="card">
-        <div class="icon">▶️</div>
-        <h3>Featured Video</h3>
-        <p>Video content will appear here.</p>
-      </div>
-
-      <div class="card">
-        <div class="icon">📺</div>
-        <h3>Sponsored Content</h3>
-        <p>Sponsored videos will appear here.</p>
-      </div>
-
-    </div>
-
-  </section>
-
-  <footer>
-    <p>© 2026 NaijaWatch. All rights reserved.</p>
-  </footer>
+    if (text.includes(input)) {
+      card.style.display = "block";
+    } else {
+      card.style.display = "none";
+    }
+  });
+}
+</script>
 
 </body>
 </html>
