@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>NaijaWatch - Watch. Discover. Enjoy.</title>
 
 <style>
@@ -128,14 +129,10 @@ nav a {
   box-shadow: 0 4px 15px rgba(0,0,0,0.06);
 }
 
-.thumbnail {
-  height: 150px;
-  background: linear-gradient(135deg, #0f766e, #1e3a8a);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: white;
-  font-size: 45px;
+.video-player {
+  width: 100%;
+  display: block;
+  background: black;
 }
 
 .card-content {
@@ -225,9 +222,12 @@ footer {
 </section>
 
 <section class="search">
-  <input type="text" id="searchInput"
+  <input
+    type="text"
+    id="searchInput"
     placeholder="Search entertainment, news, comedy..."
-    onkeyup="searchVideos()">
+    onkeyup="searchVideos()"
+  >
 </section>
 
 <main class="container">
@@ -247,38 +247,45 @@ footer {
   <div class="videos">
 
     <div class="card" id="entertainment">
-      <div class="thumbnail">🎬</div>
+
+      <video
+        class="video-player"
+        controls
+        playsinline
+        preload="metadata"
+      >
+        <source
+          src="https://ficufvyimknmblbsubnc.supabase.co/storage/v1/object/public/Videos/tiktok_7658339337351793927__1787736269989_No%20Watermark%20HD.mp4"
+          type="video/mp4"
+        >
+        Your browser does not support the video player.
+      </video>
+
       <div class="card-content">
         <h3>Latest Nigerian Entertainment</h3>
-        <p>Discover trending entertainment stories and videos.</p>
-        <a href="#" class="watch">Watch Video →</a>
+        <p>Watch the latest entertainment video on NaijaWatch.</p>
       </div>
+
     </div>
 
     <div class="card">
-      <div class="thumbnail">😂</div>
       <div class="card-content">
-        <h3>Comedy & Funny Moments</h3>
-        <p>Enjoy comedy and entertaining moments.</p>
-        <a href="#" class="watch">Watch Video →</a>
+        <h3>😂 Comedy & Funny Moments</h3>
+        <p>More entertaining videos will be added soon.</p>
       </div>
     </div>
 
     <div class="card" id="news">
-      <div class="thumbnail">📰</div>
       <div class="card-content">
-        <h3>Latest Nigerian News</h3>
-        <p>Stay informed with important news and updates.</p>
-        <a href="#" class="watch">Watch Video →</a>
+        <h3>📰 Latest Nigerian News</h3>
+        <p>News videos will be added soon.</p>
       </div>
     </div>
 
     <div class="card">
-      <div class="thumbnail">🎵</div>
       <div class="card-content">
-        <h3>Music & Trending Stories</h3>
-        <p>Explore music news and trending stories.</p>
-        <a href="#" class="watch">Watch Video →</a>
+        <h3>🎵 Music & Trending Stories</h3>
+        <p>Music videos and trending stories will be added soon.</p>
       </div>
     </div>
 
@@ -286,11 +293,13 @@ footer {
 
   <div class="reward" id="rewards">
     <h2>💰 Rewards Coming Soon</h2>
+
     <p>
       NaijaWatch is being developed to support a legitimate
       rewards program for viewers. More details will be announced
       when the system is ready.
     </p>
+
     <a href="#" class="btn">Learn More</a>
   </div>
 
@@ -303,10 +312,16 @@ footer {
 
 <script>
 function searchVideos() {
-  let input = document.getElementById("searchInput").value.toLowerCase();
+
+  let input = document
+    .getElementById("searchInput")
+    .value
+    .toLowerCase();
+
   let cards = document.querySelectorAll(".card");
 
   cards.forEach(function(card) {
+
     let text = card.innerText.toLowerCase();
 
     if (text.includes(input)) {
@@ -314,6 +329,7 @@ function searchVideos() {
     } else {
       card.style.display = "none";
     }
+
   });
 }
 </script>
